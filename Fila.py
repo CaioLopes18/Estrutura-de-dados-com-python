@@ -5,8 +5,38 @@
 
 import os
 from collections import deque
-Fila = deque()
 os.system("cls")
+
+class Queue:
+    def __init__(self):
+        self.queue= deque()
+    
+    def addOrder(self,order):
+        self.queue.append(order)
+
+    def processOrder(self):
+        if len(self.queue) == 0:
+            os.system("cls")
+            print("Você está sem pedidos no momento, tente adicionando um\n")
+        else:
+            processedOrder = self.queue.popleft()
+            print(f"Primeiro pedido da fila concluido, pedido:\n{processedOrder}")
+
+            if len(self.queue) == 0:
+                print("Você está sem pedidos no momento, você concluiu todos da fila\n")
+            else:
+                print(f"Proximo pedido a ser feito:\n{self.queue[0]}")
+
+    def showOrders(self):
+        if len(self.queue)==0:
+              os.system("cls")
+              print("Você está sem pedidos no momento :( ")
+        else:
+            print("Ordem dos pedidos:")
+            for elemento in self.queue:
+                print(f"{self.queue.index(elemento)+1}° - {elemento}")
+
+queue = Queue()
 while True:
 
     print("-------------------\n"
@@ -21,35 +51,25 @@ while True:
       "3 - Mostrar pedidos\n"
       "0 - Fechar")
     funcao = int(input())
+
     if funcao==1:
         os.system("cls")
-        pedido = input("Insira o pedido\n")
-        Fila.append(pedido)
+        order = input("Insira o pedido\n")
+        queue.addOrder(order)
+
     elif funcao==2:
         os.system("cls")
-        if len(Fila)==0:
-            os.system("cls")
-            print("Você está sem pedidos no momento, tente adicionando um\n")
-        else:
-            PedidoRemovido = Fila.popleft()
-            print(f"Primeiro pedido da fila concluido, pedido:\n{PedidoRemovido}")
-            if len(Fila)==0:
-                print("Você está sem pedidos no momento, você concluiu todos da fila\n")
-            else:
-                print(f"Proximo pedido a ser feito:\n{Fila[0]}")
+        queue.processOrder()
+
     elif funcao==3:
         os.system("cls")
-        if len(Fila)==0:
-              os.system("cls")
-              print("Você está sem pedidos no momento :( ")
-        else:
-            print("Ordem dos pedidos:")
-            for elemento in Fila:
-                print(f"{Fila.index(elemento)+1}° - {elemento}")
+        queue.showOrders()
+
     elif funcao==0:
          os.system("cls")
          print("programa encerrado")
          break
+    
     else:
          os.system("cls")
          print("entrada invalida,tente novamente")

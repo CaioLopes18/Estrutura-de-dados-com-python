@@ -10,7 +10,7 @@ class staticStack:
         return self.top == -1
     
     def isFull(self):
-        return self.top == self.maxSize- 1
+        return self.top == self.maxSize -1
     
     def stackUp(self,item):
         os.system("cls")
@@ -44,11 +44,13 @@ stack = staticStack(size)
 while True:
     
     print("""
+======Operações com Pilha Estatica======
+          
 1 - Inserir item na pilha
 2 - Printar topo da pilha
 3 - Desempilhar pilha
 """)
-    f = int(input(""))
+    f = int(input("Insira o número da função que deseja executar\n"))
     if f == 1:
         item = input("insira um item\n")
         stack.stackUp(item)
@@ -56,7 +58,9 @@ while True:
         stack.printTopStack()
     elif f == 3:
         stack.unstack()
-    
     elif f == 0:
         print("encerrando...\n")
         break
+    else:
+        os.system("cls")
+        print("entrada invalida,tente novamente")

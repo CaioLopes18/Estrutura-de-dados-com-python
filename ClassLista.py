@@ -97,3 +97,6 @@ while True:
     elif function == 0:
         print("fechando...")
         break
+    else:
+        os.system("cls")
+        print("entrada invalida,tente novamente")
